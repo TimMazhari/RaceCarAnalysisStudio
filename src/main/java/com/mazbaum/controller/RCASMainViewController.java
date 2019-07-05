@@ -1,17 +1,17 @@
-package rcas.controller;
+package com.mazbaum.controller;
 
-import java.util.Iterator;
-import java.util.ResourceBundle;
-
+import com.mazbaum.model.MFTModel;
+import com.mazbaum.model.RaceCar;
+import com.mazbaum.model.TireModel;
+import com.mazbaum.util.CorneringAnalyserUtil;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.layout.GridPane;
-import rcas.model.MFTModel;
-import rcas.model.RaceCar;
-import rcas.model.TireModel;
-import rcas.util.CorneringAnalyserUtil;
+
+import java.util.Iterator;
+import java.util.ResourceBundle;
 
 public class RCASMainViewController {
 

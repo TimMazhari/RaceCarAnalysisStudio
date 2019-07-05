@@ -1,4 +1,4 @@
-package rcas.model;
+package com.mazbaum.model;
 
 /**
  * This interface defines the methods to be supported in a class representing
@@ -16,7 +16,7 @@ public interface TireModel {
 	 * <br>
 	 * 
 	 * @param slipAngle
-	 *            - slip angle of the tire in degrees (°).
+	 *            - slip angle of the tire in degrees (ï¿½).
 	 * @param load
 	 *            - load on the tire in N.
 	 * @return - lateral tire force in N.

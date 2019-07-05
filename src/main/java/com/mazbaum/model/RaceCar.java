@@ -1,4 +1,4 @@
-package rcas.model;
+package com.mazbaum.model;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;

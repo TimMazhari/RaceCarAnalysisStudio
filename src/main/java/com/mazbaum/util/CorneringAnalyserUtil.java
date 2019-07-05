@@ -1,10 +1,10 @@
-package rcas.util;
+package com.mazbaum.util;
 
+import com.mazbaum.model.RaceCar;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
-import rcas.model.RaceCar;
 
 /**
  * Utility Class for the analysis of the cornering capabilities of a RaceCar
@@ -19,11 +19,11 @@ public class CorneringAnalyserUtil {
 	private static double G = 9.81;
 	// default speed for the calculation of the MMM diagram in m/s.
 	private static double DEFAULT_SPEED = 100 / 3.6;
-	// body slip angle delta values for the MMM chart in degrees (°).
+	// body slip angle delta values for the MMM chart in degrees (ï¿½).
 	private static double FROM_DELTA = -20.0;
 	private static double TO_DELTA = 20.0;
 	private static double DELTA_INCREMENT = 0.5;
-	// steering angle beta values for the MMM chart in degrees (°).
+	// steering angle beta values for the MMM chart in degrees (ï¿½).
 	private static double FROM_BETA = -10.0;
 	private static double TO_BETA = 10.0;
 	private static double BETA_INCREMENT = 0.5;
@@ -39,8 +39,8 @@ public class CorneringAnalyserUtil {
 	 * Other possible calculations to be offered in this class as a TODO for
 	 * further development.
 	 * 
-	 * Double getYawInertia(...): Annäherung Massenträgheitsmoment mit der
-	 * Formel Jz (kgm2) = 0.1269 * Masse (kg) * Radstand (mm) * Gesamtlänge des
+	 * Double getYawInertia(...): Annï¿½herung Massentrï¿½gheitsmoment mit der
+	 * Formel Jz (kgm2) = 0.1269 * Masse (kg) * Radstand (mm) * Gesamtlï¿½nge des
 	 * Fahrzeugs (mm).
 	 * 
 	 * Methods which return the distribution of the weight in percent.
@@ -150,7 +150,7 @@ public class CorneringAnalyserUtil {
 
 		/**
 		 * 
-		 * @return body slip angle beta in degrees (°).
+		 * @return body slip angle beta in degrees (ï¿½).
 		 */
 		public Double getBeta() {
 			return this.beta;
@@ -159,7 +159,7 @@ public class CorneringAnalyserUtil {
 		/**
 		 * 
 		 * @param beta
-		 *            - the body slip angle beta in degrees (°) to be set.
+		 *            - the body slip angle beta in degrees (ï¿½) to be set.
 		 */
 		public void setBeta(Double beta) {
 			this.beta = beta;
@@ -167,16 +167,14 @@ public class CorneringAnalyserUtil {
 
 		/**
 		 * 
-		 * @return steering angle delta in degrees (°).
+		 * @return steering angle delta in degrees (ï¿½).
 		 */
 		public Double getDelta() {
 			return this.delta;
 		}
 
 		/**
-		 * 
-		 * @param beta
-		 *            - the steering angle delta in degrees (°) to be set.
+		 *
 		 */
 		public void setDelta(Double delta) {
 			this.delta = delta;
@@ -227,9 +225,9 @@ public class CorneringAnalyserUtil {
 	 * @param carSpeed
 	 *            - speed of the car in m/s.
 	 * @param beta
-	 *            - vehicle slip angle "beta" in degrees (°).
+	 *            - vehicle slip angle "beta" in degrees (ï¿½).
 	 * @param delta
-	 *            - steering angle "delta" in degrees (°).
+	 *            - steering angle "delta" in degrees (ï¿½).
 	 */
 	private MMMSinglePoint calculateMMMSinglePoint(RaceCar raceCar, Double carSpeed, Double beta, Double delta) {
 		// yaw rate in radians (s^-1), initially assumed with 0.1.
@@ -271,7 +269,7 @@ public class CorneringAnalyserUtil {
 			Double br = raceCar.getRearTrack();
 			Double hbo = raceCar.getCogHeight();
 
-			// calculate slip angles for all four tires in degrees (°).
+			// calculate slip angles for all four tires in degrees (ï¿½).
 			slipAngleFL = singlePoint.getDelta()
 					- Math.toDegrees(Math.atan((vY + (yawRate * lf)) / (vX - (yawRate * (bf / 2)))));
 			slipAngleFR = singlePoint.getDelta()
@@ -345,7 +343,7 @@ public class CorneringAnalyserUtil {
 
 		/*
 		 * Draw the steering angle curves first. Start with steering angle as
-		 * delta in degrees (°).
+		 * delta in degrees (ï¿½).
 		 */
 		for (Double delta = FROM_DELTA; delta <= TO_DELTA; delta += DELTA_INCREMENT) {
 
@@ -355,7 +353,7 @@ public class CorneringAnalyserUtil {
 			chartDataList.add(betaCurve);
 			betaCurve.setName(String.format("D:%.2f", delta));
 
-			// body slip angle (beta) loop in degrees (°).
+			// body slip angle (beta) loop in degrees (ï¿½).
 			for (Double beta = FROM_BETA; beta <= TO_BETA; beta += BETA_INCREMENT) {
 				// calculate a single point based on the approximation of the
 				// lateral force and receive results in the helper inner class.
@@ -370,7 +368,7 @@ public class CorneringAnalyserUtil {
 		}
 
 		/*
-		 * Second, draw the body slip angle curves in degrees (°).
+		 * Second, draw the body slip angle curves in degrees (ï¿½).
 		 */
 		for (Double beta = FROM_BETA; beta <= TO_BETA; beta += BETA_INCREMENT) {
 
@@ -380,7 +378,7 @@ public class CorneringAnalyserUtil {
 			chartDataList.add(deltaCurve);
 			deltaCurve.setName(String.format("B:%.2f", beta));
 
-			// steering angle (delta) loop in degrees (°).
+			// steering angle (delta) loop in degrees (ï¿½).
 			for (Double delta = FROM_DELTA; delta <= TO_DELTA; delta += DELTA_INCREMENT) {
 
 				// calculate lateral force approximation and receive results in

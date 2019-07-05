@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" style="-fx-background-color: f6f6f6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXButton prefHeight="47.0" prefWidth="137.0" text="Racecar 1">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <Line endX="100.0" layoutX="138.0" layoutY="451.0" rotate="90.0" scaleX="4.49" startX="-100.0" />
+      <JFXButton layoutY="47.0" prefHeight="47.0" prefWidth="137.0" text="Racecar 2">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutY="94.0" prefHeight="47.0" prefWidth="137.0" text="Racecar 3">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutY="141.0" prefHeight="47.0" prefWidth="137.0" text="Racecar 4">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="createButton" layoutY="853.0" prefHeight="47.0" prefWidth="137.0" text="Create">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <Line endX="100.0" layoutX="68.0" layoutY="853.0" scaleX="0.69" startX="-100.0" />
+      <JFXTextField fx:id="nameInput" focusColor="#c00000" layoutX="601.0" layoutY="35.0" prefHeight="25.0" prefWidth="198.0" />
+      <Text layoutX="528.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="48.13671875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="479.0" fitWidth="198.0" layoutX="344.0" layoutY="211.0">
+         <image>
+            <Image url="@../images/Topview.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="399.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Front Track" wrappingWidth="97.13671875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="frontTrackInput" focusColor="#c00000" layoutX="349.0" layoutY="176.0" prefHeight="25.0" prefWidth="198.0" />
+      <Text layoutX="569.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Corner Weight FR" wrappingWidth="150.13671875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="cornerWeightFRInput" focusColor="#c00000" layoutX="634.0" layoutY="315.0" prefHeight="25.0" prefWidth="48.0" />
+      <JFXSlider fx:id="cornerWeightFRSlider" blockIncrement="0.0" indicatorPosition="RIGHT" layoutX="518.0" layoutY="301.0" majorTickUnit="950.0" max="1000.0" min="50.0" minorTickCount="0" prefHeight="58.0" prefWidth="126.0" rotate="-90.0" showTickLabels="true" style="-fx-background-color: f6f6f6;" value="450.0" />
+      <JFXSlider fx:id="cornerWeightRRSlider" blockIncrement="0.0" indicatorPosition="RIGHT" layoutX="518.0" layoutY="609.0" majorTickUnit="950.0" max="1000.0" min="50.0" minorTickCount="0" prefHeight="58.0" prefWidth="126.0" rotate="-90.0" showTickLabels="true" style="-fx-background-color: f6f6f6;" value="450.0" />
+      <JFXTextField fx:id="cornerWeightRRInput" focusColor="#c00000" layoutX="634.0" layoutY="623.0" prefHeight="25.0" prefWidth="48.0" />
+      <Text layoutX="569.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Corner Weight RR" wrappingWidth="150.13671875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <JFXSlider fx:id="cornerWeightRLSlider" blockIncrement="0.0" layoutX="238.0" layoutY="609.0" majorTickUnit="950.0" max="1000.0" min="50.0" minorTickCount="0" prefHeight="58.0" prefWidth="126.0" rotate="-90.0" showTickLabels="true" style="-fx-background-color: f6f6f6;" value="450.0" />
+      <JFXSlider fx:id="cornerWeightFLSlider" blockIncrement="0.0" layoutX="238.0" layoutY="301.0" majorTickUnit="950.0" max="1000.0" min="50.0" minorTickCount="0" prefHeight="58.0" prefWidth="126.0" rotate="-90.0" showTickLabels="true" style="-fx-background-color: f6f6f6;" value="450.0" />
+      <Text layoutX="166.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Corner Weight RL" wrappingWidth="150.13671875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="166.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Corner Weight FL" wrappingWidth="150.13671875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="cornerWeightRLInput" focusColor="#c00000" layoutX="184.0" layoutY="623.0" prefHeight="25.0" prefWidth="48.0" />
+      <JFXTextField fx:id="cornerWeightFLInput" focusColor="#c00000" layoutX="184.0" layoutY="315.0" prefHeight="25.0" prefWidth="48.0" />
+      <JFXTextField fx:id="rearTrackInput" focusColor="#c00000" layoutX="349.0" layoutY="712.0" prefHeight="25.0" prefWidth="198.0" />
+      <Text layoutX="399.0" layoutY="767.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rear Track" wrappingWidth="97.13671875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="118.0" fitWidth="454.0" layoutX="876.0" layoutY="243.0">
+         <image>
+            <Image url="@../images/Sideview1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="118.0" fitWidth="454.0" layoutX="876.0" layoutY="551.0">
+         <image>
+            <Image url="@../images/Sideview2.png" />
+         </image>
+      </ImageView>
+      <JFXSlider fx:id="cogSlider" blockIncrement="0.0" indicatorPosition="RIGHT" layoutX="1008.0" layoutY="269.0" majorTickUnit="95.0" max="200.0" min="10.0" minorTickCount="0" prefHeight="58.0" prefWidth="110.0" rotate="-90.0" showTickLabels="true" style="-fx-background-color: transparent;" value="150.0" />
+      <JFXSlider fx:id="frontRollDistSlider" blockIncrement="0.0" indicatorPosition="RIGHT" layoutX="876.0" layoutY="364.0" majorTickUnit="10.0" max="80.0" min="20.0" minorTickCount="0" prefHeight="58.0" prefWidth="454.0" showTickLabels="true" style="-fx-background-color: transparent;" value="50.0" />
+      <JFXTextField fx:id="cogInput" layoutX="1028.0" layoutY="206.0" prefHeight="25.0" prefWidth="48.0" />
+      <Text layoutX="983.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Center of gravity" wrappingWidth="138.69000244140625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="frontRollDistInput" focusColor="#c00000" layoutX="1079.0" layoutY="423.0" prefHeight="25.0" prefWidth="48.0" />
+      <Text layoutX="945.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Front roll dist." wrappingWidth="138.69000244140625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="945.0" layoutY="742.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wheelbase" wrappingWidth="138.69000244140625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="wheelBaseInput" focusColor="#c00000" layoutX="1079.0" layoutY="723.0" prefHeight="25.0" prefWidth="48.0" />
+      <JFXSlider fx:id="wheelBaseSlider" blockIncrement="0.0" indicatorPosition="RIGHT" layoutX="876.0" layoutY="664.0" majorTickUnit="0.5" max="6.0" min="0.5" minorTickCount="0" prefHeight="58.0" prefWidth="454.0" showTickLabels="true" style="-fx-background-color: transparent;" value="3.0" />
+      <JFXButton fx:id="createButton1" layoutX="1193.0" layoutY="829.0" prefHeight="47.0" prefWidth="137.0" text="Save">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</Pane>

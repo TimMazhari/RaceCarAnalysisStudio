@@ -1,3 +1,5 @@
+package com.mazbaum;
+
 import java.util.ResourceBundle;
 
 import javafx.application.Application;

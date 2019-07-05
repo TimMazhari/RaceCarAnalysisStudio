@@ -1,4 +1,4 @@
-package rcas.model;
+package com.mazbaum.model;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -110,7 +110,7 @@ public class MFTModel implements TireModel {
 	 * <b>CAUTION:</b> this function returns a value in Newton N!
 	 * 
 	 * @param slipAngle
-	 *            - the slip angle in degrees (°).
+	 *            - the slip angle in degrees (ï¿½).
 	 * @param load
 	 *            - the load in N.
 	 * @return - lateral tire force in N.
