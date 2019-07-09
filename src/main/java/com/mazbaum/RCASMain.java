@@ -2,9 +2,11 @@ package com.mazbaum;
 
 import java.util.ResourceBundle;
 
+import com.mazbaum.util.RaceCarInitializer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -20,6 +22,7 @@ public class RCASMain extends Application {
 
 		Pane mainPane = fxmlLoader.load();
 		Scene mainScene = new Scene(mainPane, 1400, 890);
+		primaryStage.getIcons().add(new Image(RCASMain.class.getResourceAsStream("/images/Icon.png")));
 		primaryStage.centerOnScreen();
 		primaryStage.setTitle(resourceBundle.getString("applicationTitle"));
 		primaryStage.setScene(mainScene);
@@ -28,6 +31,7 @@ public class RCASMain extends Application {
 	}
 
 	public static void main(String[] args) {
+		RaceCarInitializer.initRaceCar();
 		Application.launch(RCASMain.class, args);
 	}
 }
