@@ -16,8 +16,8 @@ public class RaceCar {
 	private static String DEFAULT_NAME = "Race Car";
 	private static double DEFAULT_TRACK = 1.6;
 	private static double DEFAULT_WHEELBASE = 2.6;
-	private static double DEFAULT_COGHEIGHT = 0.5;
-	private static double DEFAULT_FRONTROLLDIST = 0.5;
+	private static double DEFAULT_COGHEIGHT = 10;
+	private static double DEFAULT_FRONTROLLDIST = 20;
 
 	// the name of the car.
 	private SimpleStringProperty name = new SimpleStringProperty(DEFAULT_NAME);
@@ -55,6 +55,8 @@ public class RaceCar {
 	// rear axle tire model of the car.
 	private TireModel rearAxleTireModel;
 
+	private long id;
+
 	/**
 	 * Creates a new Race Car Object with the given corner weights in kg and the
 	 * following defaults: <br>
@@ -75,7 +77,8 @@ public class RaceCar {
 	 * @param cornerWeightRR
 	 *            - Rear Right corner weight in kg.
 	 */
-	public RaceCar(double cornerWeightFL, double cornerWeightFR, double cornerWeightRL, double cornerWeightRR) {
+	public RaceCar(Long id, double cornerWeightFL, double cornerWeightFR, double cornerWeightRL, double cornerWeightRR) {
+		this.id = id;
 		this.cornerWeightFL = new SimpleDoubleProperty(cornerWeightFL);
 		this.cornerWeightFR = new SimpleDoubleProperty(cornerWeightFR);
 		this.cornerWeightRL = new SimpleDoubleProperty(cornerWeightRL);
@@ -351,5 +354,9 @@ public class RaceCar {
 				this.getWheelbase(), this.getCogHeight(), this.getFrontRollDist(), this.getCornerWeightFL(),
 				this.getCornerWeightFR(), this.getCornerWeightRL(), this.getCornerWeightRR(),
 				this.getFrontAxleTireModel().toString(), this.getRearAxleTireModel().toString());
+	}
+
+	public long getId() {
+		return this.id;
 	}
 }
