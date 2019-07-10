@@ -64,8 +64,7 @@ public class RCASMainViewController {
 
 	private void setSeriesStyle(ObservableList<Series<Number, Number>> dataList_1, String styleSelector,
 			String lineStyle) {
-		for (Iterator<Series<Number, Number>> iterator = dataList_1.iterator(); iterator.hasNext();) {
-			Series<Number, Number> curve = (Series<Number, Number>) iterator.next();
+		for (Series<Number, Number> curve : dataList_1) {
 			curve.getNode().lookup(styleSelector).setStyle(lineStyle);
 		}
 	}

@@ -14,7 +14,7 @@
 
       <JFXListView fx:id="raceCarList" prefHeight="850.0" prefWidth="135.0" style="-fx-background-color: f6f6f6;">
       </JFXListView>
-      <JFXButton fx:id="createButton" layoutY="853.0" prefHeight="47.0" prefWidth="137.0" style="-fx-background-color: #BEBEBE;" text="%create">
+      <JFXButton fx:id="createButton" layoutY="853.0" prefHeight="47.0" prefWidth="137.0" style="-fx-background-color: #BEBEBE;" text="%create" onAction="#createButtonClicked">
          <font>
             <Font size="18.0" />
          </font>

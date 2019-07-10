@@ -15,9 +15,13 @@ public class RaceCar {
 
 	private static String DEFAULT_NAME = "Race Car";
 	private static double DEFAULT_TRACK = 1.6;
+	public static double getDefaultTrack(){return DEFAULT_TRACK;}
 	private static double DEFAULT_WHEELBASE = 2.6;
+	public static double getDefaultWheelbase(){return DEFAULT_WHEELBASE;}
 	private static double DEFAULT_COGHEIGHT = 10;
+	public static double getDefaultCogheight(){return DEFAULT_COGHEIGHT;}
 	private static double DEFAULT_FRONTROLLDIST = 20;
+	public static double getDefaultFrontrolldist(){return DEFAULT_FRONTROLLDIST;}
 
 	// the name of the car.
 	private SimpleStringProperty name = new SimpleStringProperty(DEFAULT_NAME);

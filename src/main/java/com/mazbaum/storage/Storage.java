@@ -55,8 +55,26 @@ public class Storage {
         selectedRaceCarSet = true;
     }
 
-    public static boolean selectedRaceCarSet(){
-        return selectedRaceCarSet();
+    public static Long getNewId() {
+        long highestId = 0L;
+        if(!raceCarArrayList.isEmpty()){
+            for(RaceCar raceCar : raceCarArrayList){
+                if(raceCar.getId() > highestId){
+                    highestId = raceCar.getId();
+                }
+            }
+            highestId += 1;
+        }
+        return highestId;
     }
 
+    public static void replaceRaceCar(RaceCar raceCar) {
+        for(int i = 0; i < raceCarArrayList.size() ; i++){
+            if(raceCarArrayList.get(i).getId() == raceCar.getId()){
+                //TODO Remove in a loop
+                raceCarArrayList.remove(i);
+                raceCarArrayList.add(i, raceCar);
+            }
+        }
+    }
 }

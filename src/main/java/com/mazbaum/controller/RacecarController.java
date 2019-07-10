@@ -97,6 +97,7 @@ public class RacecarController {
     @FXML
     private JFXListView<String> raceCarList;
 
+    //Initialize
 
     @FXML
     public void initialize() {
@@ -128,37 +129,65 @@ public class RacecarController {
         updateRaceCarList();
 
         //Set default disabled
-        setChangeAndSaveDisabled(true);
+        setFieldsEmpty();
+        setButtonsDisabled(true, true, true);
         setAllFieldsAndSliderDisabled(true);
 
     }
 
-    private void setAllFieldsAndSliderDisabled(boolean disabled) {
-        nameInput.setDisable(disabled);
-        frontTrackInput.setDisable(disabled);
-        cornerWeightFLInput.setDisable(disabled);
-        cornerWeightRLInput.setDisable(disabled);
-        rearTrackInput.setDisable(disabled);
-        cornerWeightRRInput.setDisable(disabled);
-        cornerWeightFRInput.setDisable(disabled);
-        cogInput.setDisable(disabled);
-        frontRollDistInput.setDisable(disabled);
-        wheelBaseInput.setDisable(disabled);
+    //Click
 
-        cogSlider.setDisable(disabled);
-        wheelBaseSlider.setDisable(disabled);
-        frontRollDistSlider.setDisable(disabled);
-        cornerWeightFLSlider.setDisable(disabled);
-        cornerWeightRLSlider.setDisable(disabled);
-        cornerWeightRRSlider.setDisable(disabled);
-        cornerWeightFRSlider.setDisable(disabled);
+    /**
+     * Handles the edit button click
+     */
+    public void editButtonClicked() {
+        setButtonsDisabled(false, true, true);
+        setAllFieldsAndSliderDisabled(false);
     }
 
-    private void setChangeAndSaveDisabled(boolean disabled) {
-        editButton.setDisable(disabled);
-        saveButton.setDisable(disabled);
+    /**
+     * Handles the save button click
+     */
+    public void saveButtonClicked() {
+        clearInputFieldStyle();
+        boolean minOneError = false;
+        HashMap<JFXTextField, Boolean> errors = validateFields();
+
+        for(Map.Entry<JFXTextField, Boolean> entry : errors.entrySet()) {
+            JFXTextField textField = entry.getKey();
+            Boolean value = entry.getValue();
+
+            if(value){
+                textField.styleProperty().setValue("-fx-text-fill: #e15f50;");
+                minOneError = true;
+            }
+        }
+
+        if(!minOneError){
+            saveRaceCar();
+            updateRaceCarList();
+            selectRaceCarInListView();
+            setButtonsDisabled(true, false, false);
+            setAllFieldsAndSliderDisabled(true);
+        }
     }
 
+    /**
+     * Handles the create button click
+     */
+    public void createButtonClicked() {
+        clearInputFieldStyle();
+        setAllFieldsAndSliderDisabled(false);
+        setButtonsDisabled(false, true, true);
+        setDefaultValues();
+        Storage.setSelectedRaceCar(null);
+    }
+
+    //Events
+
+    /**
+     * Sets the list clicked event
+     */
     private void setListClickedEvent() {
         raceCarList.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -166,27 +195,20 @@ public class RacecarController {
                 String raceCarName = raceCarList.getSelectionModel().getSelectedItem();
                 RaceCar raceCar = Storage.findRaceCar(raceCarName);
                 Storage.setSelectedRaceCar(raceCar);
+                clearInputFieldStyle();
                 setFields(raceCar);
                 setAllFieldsAndSliderDisabled(true);
-                saveButton.setDisable(true);
-                editButton.setDisable(false);
+                setButtonsDisabled(true, false, false);
             }
         });
     }
 
-    private void setFields(RaceCar raceCar){
-        nameInput.setText(raceCar.getName());
-        frontTrackInput.setText(String.valueOf(raceCar.getFrontTrack()));
-        cornerWeightFLInput.setText(String.valueOf(raceCar.getCornerWeightFL()));
-        cornerWeightRLInput.setText(String.valueOf(raceCar.getCornerWeightRL()));
-        rearTrackInput.setText(String.valueOf(raceCar.getRearTrack()));
-        cornerWeightRRInput.setText(String.valueOf(raceCar.getCornerWeightRR()));
-        cornerWeightFRInput.setText(String.valueOf(raceCar.getCornerWeightFR()));
-        cogInput.setText(String.valueOf(raceCar.getCogHeight()));
-        frontRollDistInput.setText(String.valueOf(raceCar.getFrontRollDist()));
-        wheelBaseInput.setText(String.valueOf(raceCar.getWheelbase()));
-    }
+    //Listener
 
+    /**
+     * Sets the listener for the text fields without slider
+     * @param textField JFXTextField
+     */
     private void setOnInput(final JFXTextField textField) {
         textField.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -202,6 +224,11 @@ public class RacecarController {
         });
     }
 
+    /**
+     * Sets the listener for the textfields with slider
+     * @param slider JFXSlider
+     * @param textField JFXTextField
+     */
     private void setOnInput(final JFXSlider slider, final JFXTextField textField) {
         textField.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -229,13 +256,11 @@ public class RacecarController {
         });
     }
 
-    private void updateRaceCarList() {
-        raceCarList.getItems().clear();
-        for(RaceCar raceCar : Storage.getAllRaceCars()) {
-            raceCarList.getItems().add(raceCar.getName());
-        }
-    }
-
+    /**
+     * Sets the lister for sliders to write the slidervalue into the text fields
+     * @param cogSlider JFXSlider
+     * @param cogInput JFXTextField
+     */
     private void setOnSlide(JFXSlider cogSlider, final JFXTextField cogInput) {
         cogSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -248,6 +273,11 @@ public class RacecarController {
         });
     }
 
+    //ValueFactory
+
+    /**
+     * Sets the listener for the baseslider and the input field of the baseslider
+     */
     private void setWheelBaseSliderSettings() {
         wheelBaseSlider.setValueFactory(new Callback<JFXSlider, StringBinding>() {
             @Override
@@ -263,31 +293,145 @@ public class RacecarController {
         });
     }
 
-    public void editButtonClicked() {
-        setChangeAndSaveDisabled(false);
-        setAllFieldsAndSliderDisabled(false);
+    //Refactor Methods
+
+    /**
+     * Sets all fields emty only for start
+     */
+    private void clearInputFieldStyle(){
+        cogInput.styleProperty().setValue("");
+        wheelBaseInput.styleProperty().setValue("");
+        frontRollDistInput.styleProperty().setValue("");
+        cornerWeightFLInput.styleProperty().setValue("");
+        cornerWeightRLInput.styleProperty().setValue("");
+        cornerWeightRRInput.styleProperty().setValue("");
+        cornerWeightFRInput.styleProperty().setValue("");
     }
 
-    public void saveButtonClicked() {
-        boolean minOneError = false;
-        HashMap<JFXTextField, Boolean> errors = validateFields();
+    /**
+     * Sets all fields and slider disabled
+     * @param disabled boolean
+     */
+    private void setAllFieldsAndSliderDisabled(boolean disabled) {
+        nameInput.setDisable(disabled);
+        frontTrackInput.setDisable(disabled);
+        cornerWeightFLInput.setDisable(disabled);
+        cornerWeightRLInput.setDisable(disabled);
+        rearTrackInput.setDisable(disabled);
+        cornerWeightRRInput.setDisable(disabled);
+        cornerWeightFRInput.setDisable(disabled);
+        cogInput.setDisable(disabled);
+        frontRollDistInput.setDisable(disabled);
+        wheelBaseInput.setDisable(disabled);
 
-        for(Map.Entry<JFXTextField, Boolean> entry : errors.entrySet()) {
-            JFXTextField textField = entry.getKey();
-            Boolean value = entry.getValue();
+        cogSlider.setDisable(disabled);
+        wheelBaseSlider.setDisable(disabled);
+        frontRollDistSlider.setDisable(disabled);
+        cornerWeightFLSlider.setDisable(disabled);
+        cornerWeightRLSlider.setDisable(disabled);
+        cornerWeightRRSlider.setDisable(disabled);
+        cornerWeightFRSlider.setDisable(disabled);
+    }
 
-            if(value){
-                // TODO Style error field
-                //textField.setStyle();
-                minOneError = true;
-            }
-        }
+    /**
+     * Method to disable or enable buttons
+     * @param save boolean
+     * @param edit boolean
+     * @param diagram boolean
+     */
+    private void setButtonsDisabled(boolean save, boolean edit, boolean diagram) {
+        saveButton.setDisable(save);
+        editButton.setDisable(edit);
+        diagramButton.setDisable(diagram);
+    }
 
-        if(!minOneError){
+    /**
+     * Sets the fields with the value of the racecar
+     * @param raceCar RaceCar
+     */
+    private void setFields(RaceCar raceCar){
+        nameInput.setText(raceCar.getName());
+        frontTrackInput.setText(String.valueOf(raceCar.getFrontTrack()));
+        cornerWeightFLInput.setText(String.valueOf(raceCar.getCornerWeightFL()));
+        cornerWeightRLInput.setText(String.valueOf(raceCar.getCornerWeightRL()));
+        rearTrackInput.setText(String.valueOf(raceCar.getRearTrack()));
+        cornerWeightRRInput.setText(String.valueOf(raceCar.getCornerWeightRR()));
+        cornerWeightFRInput.setText(String.valueOf(raceCar.getCornerWeightFR()));
+        cogInput.setText(String.valueOf(raceCar.getCogHeight()));
+        frontRollDistInput.setText(String.valueOf(raceCar.getFrontRollDist()));
+        wheelBaseInput.setText(String.valueOf(raceCar.getWheelbase()));
+    }
 
+    /**
+     * Sets all fields to empty
+     */
+    private void setFieldsEmpty(){
+        nameInput.setText("");
+        frontTrackInput.setText("");
+        cornerWeightFLInput.setText("");
+        cornerWeightRLInput.setText("");
+        rearTrackInput.setText("");
+        cornerWeightRRInput.setText("");
+        cornerWeightFRInput.setText("");
+        cogInput.setText("");
+        frontRollDistInput.setText("");
+        wheelBaseInput.setText("");
+    }
+
+    /**
+     * Updates the racecarlist
+     */
+    private void updateRaceCarList() {
+        raceCarList.getItems().clear();
+        for(RaceCar raceCar : Storage.getAllRaceCars()) {
+            raceCarList.getItems().add(raceCar.getName());
         }
     }
 
+    /**
+     * Saves the racecar if there is one selected else does create a new race car
+     */
+    private void saveRaceCar() {
+        if(Storage.getSelectedRaceCar() == null){
+            RaceCar raceCar = new RaceCar(
+                    Storage.getNewId(),
+                    Double.valueOf(cornerWeightFLInput.getText()),
+                    Double.valueOf(cornerWeightFRInput.getText()),
+                    Double.valueOf(cornerWeightRLInput.getText()),
+                    Double.valueOf(cornerWeightRRInput.getText())
+            );
+            setRaceCarDefaultsToValues(raceCar);
+            Storage.addRaceCar(raceCar);
+            Storage.setSelectedRaceCar(raceCar);
+        }else{
+            RaceCar raceCar = Storage.getSelectedRaceCar();
+            raceCar.setCornerWeightFL(Double.valueOf(cornerWeightFLInput.getText()));
+            raceCar.setCornerWeightFR(Double.valueOf(cornerWeightFRInput.getText()));
+            raceCar.setCornerWeightRL(Double.valueOf(cornerWeightRLInput.getText()));
+            raceCar.setCornerWeightRR(Double.valueOf(cornerWeightRRInput.getText()));
+            setRaceCarDefaultsToValues(raceCar);
+            Storage.replaceRaceCar(raceCar);
+            Storage.setSelectedRaceCar(raceCar);
+        }
+    }
+
+    /**
+     * Sets the defaults of a racecar to the imputs
+     * @param raceCar RaceCar
+     */
+    private void setRaceCarDefaultsToValues(RaceCar raceCar) {
+        raceCar.setName(nameInput.getText());
+        raceCar.setFrontTrack(Double.valueOf(frontTrackInput.getText()));
+        raceCar.setRearTrack(Double.valueOf(rearTrackInput.getText()));
+        raceCar.setCogHeight(Double.valueOf(cogInput.getText()));
+        raceCar.setFrontRollDist(Double.valueOf(frontRollDistInput.getText()));
+        raceCar.setWheelbase(Double.valueOf(wheelBaseInput.getText()));
+    }
+
+    /**
+     * Validates all fields
+     * @return HashMap &lt;JFXTextField, Boolean&gt;
+     */
     private HashMap<JFXTextField, Boolean> validateFields() {
         HashMap<JFXTextField, Boolean> errors = new HashMap<>();
         errors.put(nameInput, validateField(nameInput.getText()));
@@ -303,16 +447,29 @@ public class RacecarController {
         return errors;
     }
 
-    private Boolean validateField(String carName) {
+    /**
+     * Validates the carnamefiled
+     * @param carName String
+     * @return boolean
+     */
+    private boolean validateField(String carName) {
         if (carName == null || carName.isEmpty() || carName.length() > 200)
             return true;
         else {
-            if(Storage.getSelectedRaceCar().getName().equals(carName)){
-                return false;
-            }else{
+            if(Storage.getSelectedRaceCar() == null){
                 for(RaceCar raceCar : Storage.getAllRaceCars()){
                     if(raceCar.getName().equals(carName)){
                         return true;
+                    }
+                }
+            }else{
+                if(Storage.getSelectedRaceCar().getName().equals(carName)){
+                    return false;
+                }else{
+                    for(RaceCar raceCar : Storage.getAllRaceCars()){
+                        if(raceCar.getName().equals(carName)){
+                            return true;
+                        }
                     }
                 }
             }
@@ -320,14 +477,44 @@ public class RacecarController {
         return false;
     }
 
+    /**
+     * Validates all fields
+     * @param text String
+     * @param min double
+     * @param max double
+     * @return boolean
+     */
     private boolean validateField(String text, double min, double max) {
-        try {
-            Double input = Double.valueOf(text);
-            if (input < min || input > max)
+        if(text != null && !text.isEmpty()) {
+            try {
+                Double input = Double.valueOf(text);
+                if (input < min || input > max)
+                    return true;
+                return false;
+            } catch (Exception e) {
                 return true;
-            return false;
-        }catch (Exception e){
-            return true;
+            }
         }
+        return true;
+    }
+
+    /**
+     * Sets the default values of a racecar to the fields. If there is no default value it sets empty
+     */
+    private void setDefaultValues() {
+        nameInput.setText("");
+        frontTrackInput.setText(String.valueOf(RaceCar.getDefaultTrack()));
+        cornerWeightFLInput.setText("");
+        cornerWeightRLInput.setText("");
+        rearTrackInput.setText(String.valueOf(RaceCar.getDefaultTrack()));
+        cornerWeightRRInput.setText("");
+        cornerWeightFRInput.setText("");
+        cogInput.setText(String.valueOf(RaceCar.getDefaultCogheight()));
+        frontRollDistInput.setText(String.valueOf(RaceCar.getDefaultFrontrolldist()));
+        wheelBaseInput.setText(String.valueOf(RaceCar.getDefaultWheelbase()));
+    }
+
+    private void selectRaceCarInListView(){
+        raceCarList.getSelectionModel().select(Storage.getSelectedRaceCar().getName());
     }
 }

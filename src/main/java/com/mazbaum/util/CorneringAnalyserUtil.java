@@ -238,17 +238,17 @@ public class CorneringAnalyserUtil {
 		singlePoint.setDelta(delta);
 
 		// calculates the difference of the lateral forces.
-		Double approxDiff = 100.0;
+		double approxDiff = 100.0;
 
-		Double slipAngleFL = 0.0;
-		Double slipAngleFR = 0.0;
-		Double slipAngleRL = 0.0;
-		Double slipAngleRR = 0.0;
+		Double slipAngleFL;
+		Double slipAngleFR;
+		Double slipAngleRL;
+		Double slipAngleRR;
 
-		Double tireLoadFL = 0.0;
-		Double tireLoadFR = 0.0;
-		Double tireLoadRL = 0.0;
-		Double tireLoadRR = 0.0;
+		Double tireLoadFL;
+		Double tireLoadFR;
+		Double tireLoadRL;
+		Double tireLoadRR;
 
 		Double tireForceFL = 0.0;
 		Double tireForceFR = 0.0;
@@ -260,8 +260,8 @@ public class CorneringAnalyserUtil {
 
 			// basic variables needed to calculate the slip angle and
 			// corner weights for the given lateral acceleration.
-			Double vY = carSpeed * Math.sin(Math.toRadians(singlePoint.getBeta()));
-			Double vX = carSpeed * Math.cos(Math.toRadians(singlePoint.getBeta()));
+			double vY = carSpeed * Math.sin(Math.toRadians(singlePoint.getBeta()));
+			double vX = carSpeed * Math.cos(Math.toRadians(singlePoint.getBeta()));
 			Double lf = this.getCogDistanceFromFrontAxle(raceCar);
 			Double lr = this.getCogDistanceFromRearAxle(raceCar);
 			Double l = raceCar.getWheelbase();
@@ -285,11 +285,11 @@ public class CorneringAnalyserUtil {
 			 * As a TODO this part can be extended as soon as the RaceCar class
 			 * implements a suspension and aero model.
 			 */
-			Double ax = 0.0;
-			Double aeroLoadFront = 0.0;
-			Double aeroLoadRear = 0.0;
+			double ax = 0.0;
+			double aeroLoadFront = 0.0;
+			double aeroLoadRear = 0.0;
 			Double frontRollDist = raceCar.getFrontRollDist();
-			Double rearRollDist = 1.0 - raceCar.getFrontRollDist();
+			double rearRollDist = 1.0 - raceCar.getFrontRollDist();
 
 			tireLoadFL = this.getTotalCarWeight(raceCar) * ((frontRollDist * G) - ((hbo / l) * ax))
 					* (0.5 - ((hbo / bf) * (singlePoint.getLateralAccel() / G))) + aeroLoadFront;
@@ -379,8 +379,7 @@ public class CorneringAnalyserUtil {
 			deltaCurve.setName(String.format("B:%.2f", beta));
 
 			// steering angle (delta) loop in degrees (�).
-			for (Double delta = FROM_DELTA; delta <= TO_DELTA; delta += DELTA_INCREMENT) {
-
+			for (double delta = FROM_DELTA; delta <= TO_DELTA; delta += DELTA_INCREMENT) {
 				// calculate lateral force approximation and receive results in
 				// the helper inner class.
 				MMMSinglePoint singlePoint = this.calculateMMMSinglePoint(raceCar, carSpeed, beta, delta);
@@ -467,9 +466,9 @@ public class CorneringAnalyserUtil {
 	public Double getMMMBalanceValue(RaceCar raceCar) {
 		Double maxAy = 0.0;
 		Double maxMz = 0.0;
-		MMMSinglePoint point = null;
-		for (Double beta = FROM_BETA; beta <= TO_BETA; beta += BETA_INCREMENT) {
-			for (Double delta = FROM_DELTA; delta <= TO_DELTA; delta += DELTA_INCREMENT) {
+		MMMSinglePoint point;
+		for (double beta = FROM_BETA; beta <= TO_BETA; beta += BETA_INCREMENT) {
+			for (double delta = FROM_DELTA; delta <= TO_DELTA; delta += DELTA_INCREMENT) {
 				point = this.calculateMMMSinglePoint(raceCar, DEFAULT_SPEED, beta, delta);
 				// consider only right side (positive values)
 				if (point.getLateralAccel() > 0) {
@@ -493,9 +492,9 @@ public class CorneringAnalyserUtil {
 	 */
 	public Double getMMMGripValue(RaceCar raceCar) {
 		Double maxAy = 0.0;
-		MMMSinglePoint point = null;
-		for (Double beta = FROM_BETA; beta <= TO_BETA; beta += BETA_INCREMENT) {
-			for (Double delta = FROM_DELTA; delta <= TO_DELTA; delta += DELTA_INCREMENT) {
+		MMMSinglePoint point;
+		for (double beta = FROM_BETA; beta <= TO_BETA; beta += BETA_INCREMENT) {
+			for (double delta = FROM_DELTA; delta <= TO_DELTA; delta += DELTA_INCREMENT) {
 				point = this.calculateMMMSinglePoint(raceCar, DEFAULT_SPEED, beta, delta);
 				// consider only right side (positive values)
 				if (point.getLateralAccel() > 0) {
@@ -522,9 +521,9 @@ public class CorneringAnalyserUtil {
 		Double atMz = 0.0;
 		Double atBeta = 0.0;
 		Double atDelta = 0.0;
-		MMMSinglePoint point = null;
-		for (Double beta = FROM_BETA; beta <= TO_BETA; beta += BETA_INCREMENT) {
-			for (Double delta = FROM_DELTA; delta <= TO_DELTA; delta += DELTA_INCREMENT) {
+		MMMSinglePoint point;
+		for (double beta = FROM_BETA; beta <= TO_BETA; beta += BETA_INCREMENT) {
+			for (double delta = FROM_DELTA; delta <= TO_DELTA; delta += DELTA_INCREMENT) {
 				point = this.calculateMMMSinglePoint(raceCar, DEFAULT_SPEED, beta, delta);
 				if (Math.abs(point.getLateralAccel()) > Math.abs(maxAy)) {
 					maxAy = point.getLateralAccel();

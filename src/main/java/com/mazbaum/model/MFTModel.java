@@ -94,7 +94,7 @@ public class MFTModel implements TireModel {
 	}
 
 	private Double calcSlipAngleFactor(Double slipAngle) {
-		Double x = Math.toRadians(slipAngle);
+		double x = Math.toRadians(slipAngle);
 		return Math.sin(this.slipAngleCoefficientC.get()
 				* Math.atan(this.slipAngleCoefficientB.get() * x - this.slipAngleCoefficientE.get()
 						* (this.slipAngleCoefficientB.get() * x - Math.atan(this.slipAngleCoefficientB.get() * x))));
