@@ -1,81 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
+<?import javafx.scene.chart.*?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.GridPane?>
 
-<Pane prefHeight="890.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mazbaum.controller.DiagramController">
+<Pane prefHeight="890.0" prefWidth="933.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mazbaum.controller.DiagramController">
    <children>
+
       <Text layoutX="20.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%name">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
+      <JFXTextField fx:id="nameInput" layoutX="220.0" layoutY="20.0" prefHeight="25.0" prefWidth="176.0" />
+
       <Text layoutX="20.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%frontTrack">
-      <font>
-         <Font size="18.0" />
-      </font>
+         <font>
+            <Font size="18.0" />
+         </font>
       </Text>
+      <JFXTextField fx:id="frontTrackInput" layoutX="220.0" layoutY="60.0" prefHeight="25.0" prefWidth="176.0" />
+
       <Text layoutX="20.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%rearTrack">
-      <font>
-         <Font size="18.0" />
-      </font>
+         <font>
+            <Font size="18.0" />
+         </font>
       </Text>
+      <JFXTextField fx:id="rearTrackInput" layoutX="220.0" layoutY="100.0" prefHeight="25.0" prefWidth="176.0" />
+
       <Text layoutX="20.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%cornerWeightFL">
-      <font>
-         <Font size="18.0" />
-      </font>
+         <font>
+            <Font size="18.0" />
+         </font>
       </Text>
+      <JFXTextField fx:id="cornerWeightFLInput" layoutX="220.0" layoutY="140.0" prefHeight="25.0" prefWidth="176.0" />
+
       <Text layoutX="20.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%cornerWeightRL">
-      <font>
-         <Font size="18.0" />
-      </font>
+         <font>
+            <Font size="18.0" />
+         </font>
       </Text>
+      <JFXTextField fx:id="cornerWeightRLInput" layoutX="220.0" layoutY="180.0" prefHeight="25.0" prefWidth="176.0" />
+
       <Text layoutX="20.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%cornerWeightRR">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
+      <JFXTextField fx:id="cornerWeightRRInput" layoutX="220.0" layoutY="220.0" prefHeight="25.0" prefWidth="176.0" />
+
       <Text layoutX="20.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%cornerWeightFR">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
+      <JFXTextField fx:id="cornerWeightFRInput" layoutX="220.0" layoutY="260.0" prefHeight="25.0" prefWidth="176.0" />
+
       <Text layoutX="20.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%centerOfGrafity">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="20.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%frontRollDistance">
+      <JFXTextField fx:id="cogInput" layoutX="220.0" layoutY="300.0" prefHeight="25.0" prefWidth="176.0" />
+
+      <Text layoutX="20.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%frontRollDist">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
+      <JFXTextField fx:id="frontRollDistanceInput" layoutX="220.0" layoutY="340.0" prefHeight="25.0" prefWidth="176.0" />
+
       <Text layoutX="20.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%wheelbase">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="20.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%curveRadius">
+      <JFXTextField fx:id="wheelbaseInput" layoutX="220.0" layoutY="380.0" prefHeight="25.0" prefWidth="176.0" />
+
+      <Text layoutX="20.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%curveRadius">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <JFXTextField fx:id="curveRadiusInput" focusColor="#c00000" layoutX="200.0" layoutY="419.0" prefHeight="25.0" prefWidth="56.0" text="25" />
-      <Text layoutX="20.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%frictionOnRoad">
+      <JFXTextField fx:id="curveRadiusInput" focusColor="#c00000" layoutX="220.0" layoutY="520.0" prefHeight="25.0" prefWidth="176.0" text="25" />
+
+      <Text layoutX="20.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%frictionOnRoad">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <JFXTextField fx:id="frictionOnRoadInput" focusColor="#c00000" layoutX="200.0" layoutY="458.0" prefHeight="25.0" prefWidth="56.0" text="1" />
-      <JFXTextField fx:id="maxSpeedOutput" focusColor="#c00000" layoutX="200.0" layoutY="527.0" prefHeight="25.0" prefWidth="56.0" />
-      <Text layoutX="20.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%maxSpeedOutput">
+      <JFXTextField fx:id="frictionOnRoadInput" focusColor="#c00000" layoutX="220.0" layoutY="559.0" prefHeight="25.0" prefWidth="176.0" text="1" />
+      <JFXTextField fx:id="maxSpeedOutput" focusColor="#c00000" layoutX="667.0" layoutY="520.0" prefHeight="25.0" prefWidth="88.0" />
+
+      <Text layoutX="467.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%maxSpeedOutput">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <JFXComboBox fx:id="speedUnit" focusColor="#c00000" layoutX="279.0" layoutY="527.0" />
-      <JFXButton fx:id="calculateButton" layoutX="279.0" layoutY="575.0" onAction="#calculateSpeedClicked" style="-fx-background-color: #BEBEBE;" text="Calculate curve" />
+      <JFXComboBox fx:id="speedUnit" focusColor="#c00000" layoutX="220.0" layoutY="608.0" prefHeight="25.0" prefWidth="73.0" />
+      <JFXButton fx:id="calculateButton" layoutX="300.0" layoutY="608.0" onAction="#calculateSpeedClicked" style="-fx-background-color: #BEBEBE;" text="Calculate curve" />
+
+      <LineChart id="mainChart" fx:id="mainChart" createSymbols="false" layoutX="438.0" layoutY="20.0" legendVisible="false" prefHeight="450" prefWidth="450" title="%mainChartTitle">
+         <xAxis>
+            <NumberAxis label="%xAxisLabel" side="BOTTOM" fx:id="xAxis" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis fx:id="yAxis" label="%yAxisLabel" side="LEFT" />
+         </yAxis>
+      </LineChart>
+      <Text fx:id="toHighCog" layoutX="504.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%toHighCog" wrappingWidth="368.9921875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="396.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%m" />
+      <Text layoutX="396.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%m" />
+      <Text layoutX="395.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%kg" />
+      <Text layoutX="395.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%kg" />
+      <Text layoutX="395.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%kg" />
+      <Text layoutX="395.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%kg" />
+      <Text layoutX="395.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%cm" />
+      <Text layoutX="393.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
+      <Text layoutX="396.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%m" />
+
    </children>
 </Pane>

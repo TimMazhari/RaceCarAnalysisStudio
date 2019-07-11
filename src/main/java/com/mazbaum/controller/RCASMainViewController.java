@@ -43,13 +43,6 @@ public class RCASMainViewController {
 
 		CorneringAnalyserUtil corneringUtil = new CorneringAnalyserUtil();
 
-		// show what the toString() methods print out.
-		System.out.println(myRaceCar_1.toString());
-		System.out.println(myRaceCar_2.toString());
-		// show balance, grip, control and stability values of the cars.
-		this.printRaceCarCorneringValues(myRaceCar_1, corneringUtil);
-		this.printRaceCarCorneringValues(myRaceCar_2, corneringUtil);
-
 		ObservableList<Series<Number, Number>> dataList_1 = corneringUtil.generateMMMChartData(myRaceCar_1);
 		mainChart.getData().addAll(dataList_1);
 		// Set the style of the series after adding the data to the chart.
@@ -69,14 +62,4 @@ public class RCASMainViewController {
 		}
 	}
 
-	private void printRaceCarCorneringValues(RaceCar raceCar, CorneringAnalyserUtil util) {
-		System.out.println(String.format(
-				"%s: Grip = %.2f G\tBalance = %.2f Nm\tControl(entry) = %.2f Nm/deg\t"
-						+ "Control(middle) = %.2f Nm/deg\tStability(entry) = %.2f Nm/deg\t"
-						+ "Stability(middle) = %.2f Nm/deg",
-				raceCar.getName(), util.getMMMGripValue(raceCar) / 9.81, util.getMMMBalanceValue(raceCar),
-				util.getMMMControlValue(raceCar, 0.0, 0.0, 10.0), util.getMMMControlValue(raceCar, -5.0, 20.0, 30.0),
-				util.getMMMStabilityValue(raceCar, 0.0, 0.0, 1.0),
-				util.getMMMStabilityValue(raceCar, 20.0, -5.0, -4.0)));
-	}
 }

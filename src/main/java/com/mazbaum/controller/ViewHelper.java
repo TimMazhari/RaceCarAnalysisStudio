@@ -1,11 +1,11 @@
 package com.mazbaum.controller;
 
 import com.mazbaum.RCASMain;
+import com.mazbaum.storage.Storage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 public class ViewHelper {
 
     private static boolean diagramViewOpen = false;
+    private static DiagramController diagramController;
 
     public static void createRaceCarView(Stage stage){
         try {
@@ -42,8 +43,7 @@ public class ViewHelper {
             ResourceBundle resourceBundle = ResourceBundle.getBundle("RCASResources");
             fxmlLoader.setResources(resourceBundle);
 
-            Scene scene = new Scene((Parent) fxmlLoader.load(), 400, 890);
-
+            Scene scene = new Scene((Parent) fxmlLoader.load(), 933, 890);
             Stage stage = new Stage();
             stage.getIcons().add(new Image(RCASMain.class.getResourceAsStream("/images/Icon.png")));
             stage.setTitle(resourceBundle.getString("diagramTitle"));
@@ -52,9 +52,17 @@ public class ViewHelper {
             stage.show();
 
             diagramViewOpen = true;
+            diagramController = fxmlLoader.getController();
+            updateCarData();
         }
         catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void updateCarData(){
+        if(diagramViewOpen){
+            diagramController.updateRaceCarData(Storage.getSelectedRaceCar());
         }
     }
 

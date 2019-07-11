@@ -11,7 +11,7 @@ public class RaceCarInitializer {
     }
 
     private static RaceCar raceCarTwo() {
-        RaceCar raceCar = new RaceCar(0L,420, 420, 370, 370);
+        RaceCar raceCar = new RaceCar(0L,430, 430, 360, 360);
         raceCar.setFrontRollDist(20D);
         raceCar.setFrontAxleTireModel(Storage.getCustomTireModel());
         raceCar.setRearAxleTireModel(Storage.getCustomTireModel());

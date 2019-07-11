@@ -178,6 +178,7 @@ public class RacecarController {
             selectRaceCarInListView();
             setButtonsDisabled(true, false, false);
             setAllFieldsAndSliderDisabled(true);
+            ViewHelper.updateCarData();
         }
     }
 
@@ -212,6 +213,7 @@ public class RacecarController {
                 setFields(raceCar);
                 setAllFieldsAndSliderDisabled(true);
                 setButtonsDisabled(true, false, false);
+                ViewHelper.updateCarData();
             }
         });
     }
@@ -247,8 +249,6 @@ public class RacecarController {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 try{
-                    //TODO Bugs because slider
-                    //TODO Somewhere a "Exception in thread "JavaFX Application Thread" java.lang.IllegalArgumentException: The start must be <= the end"
                     if(!newValue.isEmpty()){
                         if(newValue.substring(newValue.length() - 1).equals(".")){
                             newValue = newValue + "0";
@@ -316,10 +316,10 @@ public class RacecarController {
         cogInput.styleProperty().setValue("");
         wheelBaseInput.styleProperty().setValue("");
         frontRollDistInput.styleProperty().setValue("");
-        /*cornerWeightFLInput.styleProperty().setValue("");
+        cornerWeightFLInput.styleProperty().setValue("");
         cornerWeightRLInput.styleProperty().setValue("");
         cornerWeightRRInput.styleProperty().setValue("");
-        cornerWeightFRInput.styleProperty().setValue("");*/
+        cornerWeightFRInput.styleProperty().setValue("");
     }
 
     /**

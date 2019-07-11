@@ -372,4 +372,12 @@ public class RaceCar {
 	public long getId() {
 		return this.id;
 	}
+
+	public double getFrontRollDistProcent() {
+		return this.getFrontRollDist() / 100;
+	}
+
+	public Double getCogHeightProcent() {
+		return this.getCogHeight() / 100;
+	}
 }

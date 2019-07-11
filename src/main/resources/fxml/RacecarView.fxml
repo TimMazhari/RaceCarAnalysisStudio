@@ -95,7 +95,7 @@
       <JFXTextField fx:id="cogInput" focusColor="#c00000" layoutX="1028.0" layoutY="206.0" prefHeight="25.0" prefWidth="48.0" />
       <JFXSlider fx:id="cogSlider" blockIncrement="0.0" indicatorPosition="RIGHT" layoutX="1008.0" layoutY="269.0" majorTickUnit="95.0" max="200.0" min="10.0" minorTickCount="0" prefHeight="58.0" prefWidth="110.0" rotate="-90.0" showTickLabels="true" style="-fx-background-color: transparent;" value="150.0" />
 
-      <Text layoutX="945.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%frontRollDistance" wrappingWidth="138.69000244140625">
+      <Text layoutX="945.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%frontRollDist" wrappingWidth="138.69000244140625">
          <font>
             <Font size="18.0" />
          </font>
@@ -133,6 +133,15 @@
             <Font size="18.0" />
          </font>
       </JFXButton>
+      <Text layoutX="550.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%m" wrappingWidth="35.13671875" />
+      <Text layoutX="232.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%kg" wrappingWidth="35.13671875" />
+      <Text layoutX="682.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%kg" wrappingWidth="35.13671875" />
+      <Text layoutX="232.0" layoutY="640.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%kg" wrappingWidth="35.13671875" />
+      <Text layoutX="682.0" layoutY="640.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%kg" wrappingWidth="35.13671875" />
+      <Text layoutX="1074.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%cm" wrappingWidth="35.13671875" />
+      <Text layoutX="1127.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="58.0" />
+      <Text layoutX="1127.0" layoutY="741.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%m" wrappingWidth="35.13671875" />
+      <Text layoutX="548.0" layoutY="732.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%m" wrappingWidth="35.13671875" />
 
    </children>
 </Pane>
