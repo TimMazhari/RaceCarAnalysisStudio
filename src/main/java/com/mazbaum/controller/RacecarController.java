@@ -4,23 +4,32 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXTextField;
+import com.mazbaum.RCASMain;
 import com.mazbaum.model.RaceCar;
 import com.mazbaum.storage.Storage;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 public class RacecarController {
 
@@ -183,6 +192,10 @@ public class RacecarController {
         Storage.setSelectedRaceCar(null);
     }
 
+    public void diagramButtonClicked() {
+        ViewHelper.createDiagramView();
+    }
+
     //Events
 
     /**
@@ -299,6 +312,7 @@ public class RacecarController {
      * Sets all fields emty only for start
      */
     private void clearInputFieldStyle(){
+        nameInput.styleProperty().setValue("");
         cogInput.styleProperty().setValue("");
         wheelBaseInput.styleProperty().setValue("");
         frontRollDistInput.styleProperty().setValue("");
@@ -350,6 +364,7 @@ public class RacecarController {
      * @param raceCar RaceCar
      */
     private void setFields(RaceCar raceCar){
+        setFieldsEmpty();
         nameInput.setText(raceCar.getName());
         frontTrackInput.setText(String.valueOf(raceCar.getFrontTrack()));
         cornerWeightFLInput.setText(String.valueOf(raceCar.getCornerWeightFL()));
@@ -435,10 +450,10 @@ public class RacecarController {
     private HashMap<JFXTextField, Boolean> validateFields() {
         HashMap<JFXTextField, Boolean> errors = new HashMap<>();
         errors.put(nameInput, validateField(nameInput.getText()));
-        errors.put(frontTrackInput, validateField(frontTrackInput.getText(), 0D, 1000D));
+        errors.put(frontTrackInput, validateField(frontTrackInput.getText(), 1.2D, 2));
         errors.put(cornerWeightFLInput, validateField(cornerWeightFLInput.getText(), 50D, 1000D));
         errors.put(cornerWeightRLInput, validateField(cornerWeightRLInput.getText(), 50D, 1000D));
-        errors.put(rearTrackInput, validateField(rearTrackInput.getText(), 0D, 1000D));
+        errors.put(rearTrackInput, validateField(rearTrackInput.getText(), 1.2D, 2));
         errors.put(cornerWeightRRInput, validateField(cornerWeightRRInput.getText(), 50D, 1000D));
         errors.put(cornerWeightFRInput, validateField(cornerWeightFRInput.getText(), 50D, 1000D));
         errors.put(cogInput, validateField(cogInput.getText(), 10D, 200D));
@@ -517,4 +532,5 @@ public class RacecarController {
     private void selectRaceCarInListView(){
         raceCarList.getSelectionModel().select(Storage.getSelectedRaceCar().getName());
     }
+
 }

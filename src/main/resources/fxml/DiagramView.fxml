@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="890.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mazbaum.controller.DiagramController">
+   <children>
+      <Text layoutX="20.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="20.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%frontTrack">
+      <font>
+         <Font size="18.0" />
+      </font>
+      </Text>
+      <Text layoutX="20.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%rearTrack">
+      <font>
+         <Font size="18.0" />
+      </font>
+      </Text>
+      <Text layoutX="20.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%cornerWeightFL">
+      <font>
+         <Font size="18.0" />
+      </font>
+      </Text>
+      <Text layoutX="20.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%cornerWeightRL">
+      <font>
+         <Font size="18.0" />
+      </font>
+      </Text>
+      <Text layoutX="20.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%cornerWeightRR">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="20.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%cornerWeightFR">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="20.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%centerOfGrafity">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="20.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%frontRollDistance">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="20.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%wheelbase">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>

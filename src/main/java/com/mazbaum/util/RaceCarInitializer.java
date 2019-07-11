@@ -12,7 +12,7 @@ public class RaceCarInitializer {
 
     private static RaceCar raceCarTwo() {
         RaceCar raceCar = new RaceCar(0L,420, 420, 370, 370);
-        raceCar.setFrontRollDist(0.55);
+        raceCar.setFrontRollDist(20D);
         raceCar.setFrontAxleTireModel(Storage.getCustomTireModel());
         raceCar.setRearAxleTireModel(Storage.getCustomTireModel());
         raceCar.setName("Car MOD (red)");
@@ -21,7 +21,7 @@ public class RaceCarInitializer {
 
     private static RaceCar raceCarOne() {
         RaceCar raceCar = new RaceCar(1L,420, 420, 370, 370);
-        raceCar.setFrontRollDist(0.55);
+        raceCar.setFrontRollDist(20D);
         raceCar.setFrontAxleTireModel(Storage.getDefaultTireModel());
         raceCar.setRearAxleTireModel(Storage.getDefaultTireModel());
         raceCar.setName("Car STD (blue)");

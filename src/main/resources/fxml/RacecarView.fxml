@@ -118,7 +118,7 @@
       <JFXTextField fx:id="wheelBaseInput" focusColor="#c00000" layoutX="1079.0" layoutY="723.0" prefHeight="25.0" prefWidth="48.0" />
       <JFXSlider fx:id="wheelBaseSlider" blockIncrement="0.0" indicatorPosition="RIGHT" layoutX="876.0" layoutY="664.0" majorTickUnit="0.5" max="6.0" min="0.5" minorTickCount="0" prefHeight="58.0" prefWidth="454.0" showTickLabels="true" style="-fx-background-color: transparent;" value="3.0" />
 
-      <JFXButton fx:id="diagramButton" layoutX="900.0" layoutY="829.0" prefHeight="47.0" prefWidth="137.0" style="-fx-background-color: #BEBEBE;" text="%diagram">
+      <JFXButton fx:id="diagramButton" layoutX="900.0" layoutY="829.0" prefHeight="47.0" prefWidth="137.0" style="-fx-background-color: #BEBEBE;" text="%diagram" onAction="#diagramButtonClicked">
          <font>
             <Font size="18.0" />
          </font>
