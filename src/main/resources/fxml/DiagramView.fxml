@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
@@ -56,5 +57,25 @@
             <Font size="18.0" />
          </font>
       </Text>
+      <Text layoutX="20.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%curveRadius">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="curveRadiusInput" focusColor="#c00000" layoutX="200.0" layoutY="419.0" prefHeight="25.0" prefWidth="56.0" text="25" />
+      <Text layoutX="20.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%frictionOnRoad">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="frictionOnRoadInput" focusColor="#c00000" layoutX="200.0" layoutY="458.0" prefHeight="25.0" prefWidth="56.0" text="1" />
+      <JFXTextField fx:id="maxSpeedOutput" focusColor="#c00000" layoutX="200.0" layoutY="527.0" prefHeight="25.0" prefWidth="56.0" />
+      <Text layoutX="20.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%maxSpeedOutput">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <JFXComboBox fx:id="speedUnit" focusColor="#c00000" layoutX="279.0" layoutY="527.0" />
+      <JFXButton fx:id="calculateButton" layoutX="279.0" layoutY="575.0" onAction="#calculateSpeedClicked" style="-fx-background-color: #BEBEBE;" text="Calculate curve" />
    </children>
 </Pane>
