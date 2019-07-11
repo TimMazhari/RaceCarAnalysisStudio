@@ -14,14 +14,23 @@ import javafx.beans.property.StringProperty;
 public class RaceCar {
 
 	private static String DEFAULT_NAME = "Race Car";
-	private static double DEFAULT_TRACK = 1.6;
+	private static double DEFAULT_TRACK = 1.5;
 	public static double getDefaultTrack(){return DEFAULT_TRACK;}
-	private static double DEFAULT_WHEELBASE = 2.6;
+	private static double DEFAULT_WHEELBASE = 3;
 	public static double getDefaultWheelbase(){return DEFAULT_WHEELBASE;}
-	private static double DEFAULT_COGHEIGHT = 10;
+	private static double DEFAULT_COGHEIGHT = 150;
 	public static double getDefaultCogheight(){return DEFAULT_COGHEIGHT;}
-	private static double DEFAULT_FRONTROLLDIST = 20;
+	private static double DEFAULT_FRONTROLLDIST = 50;
 	public static double getDefaultFrontrolldist(){return DEFAULT_FRONTROLLDIST;}
+
+	private static double DEFAULT_CORNER_WEIGHT_FR = 450;
+	public static double DEFAULT_CORNER_WEIGHT_FR(){return DEFAULT_CORNER_WEIGHT_FR;}
+	private static double DEFAULT_CORNER_WEIGHT_FL = 450;
+	public static double DEFAULT_CORNER_WEIGHT_FL(){return DEFAULT_CORNER_WEIGHT_FL;}
+	private static double DEFAULT_CORNER_WEIGHT_RR = 450;
+	public static double DEFAULT_CORNER_WEIGHT_RR(){return DEFAULT_CORNER_WEIGHT_RR;}
+	private static double DEFAULT_CORNER_WEIGHT_RL = 450;
+	public static double DEFAULT_CORNER_WEIGHT_RL(){return DEFAULT_CORNER_WEIGHT_RL;}
 
 	// the name of the car.
 	private SimpleStringProperty name = new SimpleStringProperty(DEFAULT_NAME);

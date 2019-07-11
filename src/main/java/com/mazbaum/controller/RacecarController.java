@@ -316,10 +316,10 @@ public class RacecarController {
         cogInput.styleProperty().setValue("");
         wheelBaseInput.styleProperty().setValue("");
         frontRollDistInput.styleProperty().setValue("");
-        cornerWeightFLInput.styleProperty().setValue("");
+        /*cornerWeightFLInput.styleProperty().setValue("");
         cornerWeightRLInput.styleProperty().setValue("");
         cornerWeightRRInput.styleProperty().setValue("");
-        cornerWeightFRInput.styleProperty().setValue("");
+        cornerWeightFRInput.styleProperty().setValue("");*/
     }
 
     /**
@@ -519,11 +519,11 @@ public class RacecarController {
     private void setDefaultValues() {
         nameInput.setText("");
         frontTrackInput.setText(String.valueOf(RaceCar.getDefaultTrack()));
-        cornerWeightFLInput.setText("");
-        cornerWeightRLInput.setText("");
+        cornerWeightFLInput.setText(String.valueOf(RaceCar.DEFAULT_CORNER_WEIGHT_FL()));
+        cornerWeightRLInput.setText(String.valueOf(RaceCar.DEFAULT_CORNER_WEIGHT_RL()));
         rearTrackInput.setText(String.valueOf(RaceCar.getDefaultTrack()));
-        cornerWeightRRInput.setText("");
-        cornerWeightFRInput.setText("");
+        cornerWeightRRInput.setText(String.valueOf(RaceCar.DEFAULT_CORNER_WEIGHT_RR()));
+        cornerWeightFRInput.setText(String.valueOf(RaceCar.DEFAULT_CORNER_WEIGHT_FR()));
         cogInput.setText(String.valueOf(RaceCar.getDefaultCogheight()));
         frontRollDistInput.setText(String.valueOf(RaceCar.getDefaultFrontrolldist()));
         wheelBaseInput.setText(String.valueOf(RaceCar.getDefaultWheelbase()));
