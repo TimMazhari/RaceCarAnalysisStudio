@@ -66,6 +66,7 @@ public class DiagramController {
 
     @FXML
     public void initialize(){
+
         speedUnit.getItems().addAll(SpeedUnits.values());
         speedUnit.getSelectionModel().selectFirst();
         disableInputFields();

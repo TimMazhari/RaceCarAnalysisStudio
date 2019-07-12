@@ -18,7 +18,7 @@ public class RaceCar {
 	public static double getDefaultTrack(){return DEFAULT_TRACK;}
 	private static double DEFAULT_WHEELBASE = 3;
 	public static double getDefaultWheelbase(){return DEFAULT_WHEELBASE;}
-	private static double DEFAULT_COGHEIGHT = 150;
+	private static double DEFAULT_COGHEIGHT = 65;
 	public static double getDefaultCogheight(){return DEFAULT_COGHEIGHT;}
 	private static double DEFAULT_FRONTROLLDIST = 50;
 	public static double getDefaultFrontrolldist(){return DEFAULT_FRONTROLLDIST;}
