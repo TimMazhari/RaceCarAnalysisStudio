@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.chart.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.layout.GridPane?>
 
 <Pane prefHeight="890.0" prefWidth="933.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mazbaum.controller.DiagramController">
    <children>
@@ -119,6 +114,7 @@
             <Font size="18.0" />
          </font>
       </Text>
+
       <Text layoutX="396.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%m" />
       <Text layoutX="396.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%m" />
       <Text layoutX="395.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%kg" />

@@ -1,6 +1,5 @@
 package com.mazbaum.controller;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import com.mazbaum.model.RaceCar;
@@ -11,15 +10,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import static java.lang.Math.sqrt;
 
 public class DiagramController {
-
-    @FXML
-    private Pane mainPane;
 
     @FXML
     private JFXTextField curveRadiusInput;
@@ -32,9 +27,6 @@ public class DiagramController {
 
     @FXML
     private JFXComboBox speedUnit;
-
-    @FXML
-    private JFXButton calculateButton;
 
     @FXML
     private JFXTextField nameInput;

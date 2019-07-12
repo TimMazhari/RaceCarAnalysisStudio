@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import com.jfoenix.controls.*?>
@@ -133,6 +132,7 @@
             <Font size="18.0" />
          </font>
       </JFXButton>
+
       <Text layoutX="550.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%m" wrappingWidth="35.13671875" />
       <Text layoutX="232.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%kg" wrappingWidth="35.13671875" />
       <Text layoutX="682.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%kg" wrappingWidth="35.13671875" />

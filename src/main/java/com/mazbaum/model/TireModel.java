@@ -23,9 +23,4 @@ public interface TireModel {
 	 */
 	Double getLateralTireForce(Double slipAngle, Double load);
 
-	/*
-	 * TODO: In future a method with the declaration
-	 * "getLongitudinalTireForce(Double slip, Double load)" for longitudinal
-	 * tire forces should be implemented.
-	 */
 }

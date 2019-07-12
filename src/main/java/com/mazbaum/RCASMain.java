@@ -1,7 +1,5 @@
 package com.mazbaum;
 
-import java.util.ResourceBundle;
-
 import com.mazbaum.controller.ViewHelper;
 import com.mazbaum.util.RaceCarInitializer;
 import javafx.application.Application;
@@ -10,7 +8,7 @@ import javafx.stage.Stage;
 public class RCASMain extends Application {
 
 	@Override
-	public void start(Stage stage) throws Exception {
+	public void start(Stage stage) {
 		ViewHelper.createRaceCarView(stage);
 	}
 
