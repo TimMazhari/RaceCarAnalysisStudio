@@ -144,6 +144,7 @@ public class DiagramController {
     }
 
     private void updateDiagram(RaceCar raceCar){
+        mainChart.getData().clear();
         if(raceCar.getCogHeight() < 70) {
             mainChart.setVisible(true);
             toHighCog.setVisible(false);
